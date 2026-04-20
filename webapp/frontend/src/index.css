@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  background: #f0f2f5; /* Ant Design 默认背景 */
+}
+
+/* Markdown 渲染：少量自定义样式提升可读性 */
+.md {
+  line-height: 1.75;
+  color: rgba(0, 0, 0, 0.88);
+}
+.md h1,
+.md h2,
+.md h3 {
+  font-weight: 800;
+  color: rgba(0, 0, 0, 0.92);
+}
+.md h1 {
+  font-size: 24px;
+  margin: 24px 0 12px;
+}
+.md h2 {
+  font-size: 20px;
+  margin: 24px 0 10px;
+}
+.md h3 {
+  font-size: 18px;
+  margin: 20px 0 8px;
+}
+.md p {
+  margin: 12px 0;
+}
+.md a {
+  color: #1677ff; /* antd primary */
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.md pre {
+  margin: 16px 0;
+  overflow: auto;
+  border-radius: 14px;
+  background: #0f172a;
+  padding: 14px;
+  color: #f1f5f9; /* slate-100 */
+}
+.md code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  font-size: 0.92em;
+}
+.md table {
+  margin: 16px 0;
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.md th,
+.md td {
+  border: 1px solid #e2e8f0; /* slate-200 */
+  padding: 8px 10px;
+  vertical-align: top;
+}
+.md thead th {
+  background: rgba(0, 0, 0, 0.02);
+}
+.md blockquote {
+  margin: 16px 0;
+  border-left: 4px solid #cbd5e1; /* slate-300 */
+  padding-left: 12px;
+  color: #475569; /* slate-600 */
+}

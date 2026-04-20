@@ -1,0 +1,173 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, 'Apple Color Emoji',
+    'Segoe UI Emoji';
+  color: #111;
+  background: #f6f7fb;
+}
+
+a {
+  color: inherit;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.card {
+  border: 1px solid #e5e5e5;
+  border-radius: 10px;
+  padding: 12px;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 12px;
+}
+
+input,
+button {
+  font-size: 14px;
+}
+
+input {
+  padding: 8px 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  width: 100%;
+  background: #fff;
+}
+
+button {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #f7f7f7;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.muted {
+  color: #666;
+  font-size: 12px;
+}
+
+.toolbar {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.brandTitle {
+  font-weight: 800;
+  letter-spacing: 0.2px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  border: 1px solid #e5e5e5;
+  background: #fafafa;
+}
+
+.badgeRunning {
+  background: #fff7e6;
+  border-color: #ffe1b0;
+  color: #8a5a00;
+}
+
+.badgeOk {
+  background: #ecfdf3;
+  border-color: #b7f0c6;
+  color: #0a6b2b;
+}
+
+.badgeFail {
+  background: #fff1f2;
+  border-color: #fecdd3;
+  color: #9f1239;
+}
+
+.spinner {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  border: 2px solid rgba(0, 0, 0, 0.12);
+  border-top-color: rgba(0, 0, 0, 0.55);
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.listItem {
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.listItemActive {
+  border-color: #aaa;
+  background: #fafafa;
+}
+
+.md {
+  line-height: 1.65;
+}
+
+.md pre {
+  overflow: auto;
+  background: #0b1020;
+  color: #e8e8e8;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.md code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+}
+
+@media (max-width: 960px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
