@@ -39,6 +39,12 @@
 - 💾 技术文档备份和归档
 - 📖 知识库建设和维护
 
+## 🌐 在线演示
+
+**Web 管理台在线演示**: [https://pachong.buhuidadaima.com](https://pachong.buhuidadaima.com)
+
+无需安装，直接体验完整功能！
+
 ---
 
 ## 📦 安装
@@ -342,6 +348,66 @@ npm run build
 ```
 
 构建产物位于 `webapp/frontend/dist/`，可由 FastAPI 静态文件服务提供。
+
+---
+
+## 🚀 生产部署
+
+### 宝塔面板部署（推荐）
+
+项目已成功部署在宝塔面板服务器上，在线演示：[https://pachong.buhuidadaima.com](https://pachong.buhuidadaima.com)
+
+**部署步骤概要：**
+
+1. **环境准备**
+   - 安装 Python 3.10+、Node.js 18+、Nginx、MySQL
+   - 配置 npm 淘宝镜像：`npm config set registry https://registry.npmmirror.com`
+
+2. **项目上传**
+   ```bash
+   cd /www/wwwroot/
+   git clone https://github.com/xuzihaojoe/doc2md_crawl4ai.git doc2md
+   ```
+
+3. **配置环境**
+   ```bash
+   cd /www/wwwroot/doc2md
+   cp .env.example .env
+   # 编辑 .env 配置数据库和密钥
+   ```
+
+4. **数据库初始化**
+   ```bash
+   python3 -m venv venv
+   source venv/bin/activate
+   pip install -r requirements.txt
+   python init_db.py
+   python init_db.py --create-admin
+   ```
+
+5. **前端构建**
+   ```bash
+   cd webapp/frontend
+   npm install
+   npm run build
+   ```
+
+6. **配置 PM2**
+   ```bash
+   pm2 start ecosystem.config.js
+   pm2 startup
+   pm2 save
+   ```
+
+7. **配置 Nginx 反向代理**
+   - 创建网站，根目录指向 `webapp/frontend/dist`
+   - 配置 `/api/` 反向代理到 `http://127.0.0.1:8000`
+
+8. **配置 SSL 证书**
+   - 在宝塔面板申请 Let's Encrypt 免费证书
+   - 开启强制 HTTPS
+
+**详细部署指南请参考：** [部署方案文档](https://github.com/xuzihaojoe/doc2md_crawl4ai/blob/main/.claude/plans/drifting-splashing-castle.md)
 
 ---
 
