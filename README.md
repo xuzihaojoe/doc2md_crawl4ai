@@ -44,19 +44,76 @@ pip install -r requirements.txt
 
 ### 安装 Web UI（可选）
 
+#### 1. 安装前端依赖
+
 ```bash
-# 安装前端依赖
 cd webapp/frontend
 npm install
-
-# 配置环境变量
-cp ../../.env.example ../../.env
-# 编辑 .env 文件，配置数据库等信息
-
-# 初始化数据库
-cd ../..
-python -c "from webapp.backend.app.db import engine; from sqlmodel import SQLModel; from webapp.backend.app.models import *; SQLModel.metadata.create_all(engine)"
 ```
+
+#### 2. 配置环境变量
+
+```bash
+# 复制环境变量模板
+cp ../../.env.example ../../.env
+
+# 编辑 .env 文件，配置数据库等信息
+nano ../../.env  # 或使用你喜欢的编辑器
+```
+
+在 `.env` 文件中配置以下内容：
+
+```env
+# 应用配置
+APP_SECRET_KEY=your-secret-key-here  # 修改为随机字符串
+CORS_ALLOW_ORIGINS=http://localhost:5173,http://127.0.0.1:5173
+
+# 数据库配置
+DATABASE_URL=mysql+pymysql://user:password@127.0.0.1:3306/doc2md?charset=utf8mb4
+# 或者使用 SQLite（开发环境）：
+# DATABASE_URL=sqlite:///./dev.db
+
+# 七牛云配置（可选，不使用可以忽略）
+QINIU_ENABLED=false
+```
+
+#### 3. 创建数据库
+
+```bash
+# 方法 1：使用 MySQL
+mysql -u root -p
+CREATE DATABASE doc2md CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+EXIT;
+
+# 方法 2：使用 SQLite（无需额外配置，会自动创建）
+# 修改 .env 中的 DATABASE_URL=sqlite:///./dev.db
+```
+
+#### 4. 初始化数据库表结构
+
+```bash
+cd ../..
+python init_db.py
+```
+
+这将创建以下数据表：
+- `users` - 用户表
+- `crawl_jobs` - 爬取任务表
+- `documents` - 文档表
+
+#### 5. （可选）创建管理员用户
+
+```bash
+python init_db.py --create-admin --admin-username admin --admin-password your_password
+```
+
+#### 6. 查看数据库结构
+
+```bash
+python init_db.py
+```
+
+运行后会显示完整的数据库表结构说明。
 
 ## 🚀 快速开始
 
